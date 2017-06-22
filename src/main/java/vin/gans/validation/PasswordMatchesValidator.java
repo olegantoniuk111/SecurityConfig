@@ -5,9 +5,6 @@ import vin.gans.domain.UserDto;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- * Created by root on 23.05.17.
- */
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
     @Override
     public void initialize(PasswordMatches passwordMatches) {

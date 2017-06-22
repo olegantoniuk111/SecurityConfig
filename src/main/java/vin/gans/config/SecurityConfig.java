@@ -15,16 +15,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import vin.gans.config.handler.SuccessLoginHandler;
 import vin.gans.domain.Role;
 import vin.gans.domain.User;
 import vin.gans.services.UserService;
 
-/**
- * Created by root on 30.04.17.
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+    @Bean
+    public SuccessLoginHandler successLoginHandler(){
+        return new SuccessLoginHandler();
+    }
 
     @Bean
     public UserDetailsService userService() throws Exception {
@@ -46,9 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .authorizeRequests()
                 .antMatchers("/", "/registerForm").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
-                .and().
-                logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
+                .and().formLogin().loginPage("/login").successHandler(successLoginHandler()).permitAll()
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
     }
     @Bean
     public PasswordEncoder bcriptPasswordEncoder(){

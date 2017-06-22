@@ -1,8 +1,5 @@
 package vin.gans.domain;
 
-/**
- * Created by root on 01.05.17.
- */
 public enum UserField {
     USER("user"),
     ADMIN("admin");

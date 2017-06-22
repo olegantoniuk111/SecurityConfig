@@ -14,11 +14,6 @@ import vin.gans.domain.User;
 import vin.gans.domain.UserDto;
 import vin.gans.persistence.UserRepository;
 
-
-/**
- * Created by root on 01.05.17.
- */
-
 @Service
 public class UserService implements UserDetailsService {
     @Autowired

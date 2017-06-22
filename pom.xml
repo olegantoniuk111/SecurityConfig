@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ua.vin</groupId>
-	<artifactId>gans</artifactId>
+	<artifactId>gansApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>gans</name>
+	<name>gansApp</name>
 	<description>Gans project for Spring Boot</description>
 
 	<parent>
@@ -53,7 +53,6 @@
 					<artifactId>spring-boot-starter-jetty</artifactId>
 					<groupId>org.springframework.boot</groupId>
 				</exclusion>
-
 			</exclusions>
 		</dependency>
 		<!-- JSTL -->

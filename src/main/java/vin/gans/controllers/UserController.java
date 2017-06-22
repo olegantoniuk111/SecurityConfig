@@ -11,9 +11,7 @@ import vin.gans.domain.User;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
 
-/**
- * Created by root on 10.05.17.
- */
+
 @Controller
 public class UserController {
 
