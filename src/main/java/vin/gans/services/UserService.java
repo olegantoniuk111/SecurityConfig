@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import vin.gans.customExeptions.EmailExistExeption;
 import vin.gans.domain.Role;
 import vin.gans.domain.User;
@@ -26,7 +27,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByUserName(username);
     }
 
-    public User createNewUserAccount(UserDto userDto) throws EmailExistExeption {
+    private User createNewUserAccount(UserDto userDto) throws EmailExistExeption {
         if (isSuchEmailExist(userDto.getEmail()))
                  {
             throw new EmailExistExeption("Account with such email exist" + userDto.getEmail());
@@ -41,7 +42,6 @@ public class UserService implements UserDetailsService {
             registredUser.setCredentialNonExpired(true);
             registredUser.setEnabled(true);
             userRepository.save(registredUser);
-
         return registredUser;
     }
     private boolean isSuchEmailExist(String email){
@@ -51,6 +51,15 @@ public class UserService implements UserDetailsService {
         }else return true;
     }
 
+    public User createUserAccount(UserDto userDto) {
+        User registeredUser = null;
+        try {
+            createNewUserAccount(userDto);
+        } catch (EmailExistExeption emailExistExeption) {
+            return null;
+        }
+        return registeredUser;
+    }
 
 
 }

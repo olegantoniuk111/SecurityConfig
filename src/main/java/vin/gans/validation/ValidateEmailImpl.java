@@ -1,16 +1,17 @@
 package vin.gans.validation;
 
+import vin.gans.domain.UserDto;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class ValidateEmailImpl implements ConstraintValidator<ValidateEmail, String> {
+public class ValidateEmailImpl implements ConstraintValidator<ValidateEmail, Object> {
 
     private Pattern pattern;
     private Matcher matcher;
-    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@"+"[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Override
     public void initialize(ValidateEmail validateEmail) {
@@ -18,8 +19,11 @@ public class ValidateEmailImpl implements ConstraintValidator<ValidateEmail, Str
     }
 
     @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return false;
+    public boolean isValid(Object object, ConstraintValidatorContext constraintValidatorContext) {
+        UserDto userDto = (UserDto) object;
+        String email = userDto.getEmail();
+        return validateEmail(email);
+
     }
 
     private boolean validateEmail(String email) {

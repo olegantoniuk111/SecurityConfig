@@ -10,6 +10,7 @@
     <title>regPage</title>
 </head>
 <body>
+
 Hello ${user}  You successfully registered on our resource!!!
 
 </body>

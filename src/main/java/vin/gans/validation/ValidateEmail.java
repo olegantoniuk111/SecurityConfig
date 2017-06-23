@@ -4,16 +4,16 @@ import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
+
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ElementType.TYPE,
         ElementType.FIELD,
         ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RUNTIME)
 @Constraint(validatedBy = ValidateEmailImpl.class)
+@Documented
 public @interface ValidateEmail{
     String message() default "Invalid Email";
     Class<?>[] groups() default {};

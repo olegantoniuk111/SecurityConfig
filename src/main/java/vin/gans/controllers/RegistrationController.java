@@ -27,38 +27,32 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/registerForm", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String getRegisterforn(Model model){
         UserDto userDto = new UserDto();
         model.addAttribute("userDto", userDto);
-        return "registerForm";
+        return "register";
     }
 
-    @RequestMapping(value = "/registerForm", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView registerNewUser(@ModelAttribute("userDto") @Valid UserDto userDto,
                                         BindingResult result, WebRequest webRequest, Errors error) {
+
         User registeredUser = new User();
         if (!result.hasErrors()) {
-            registeredUser = userService.createNewUserAccount(userDto);
+            registeredUser = userService.createUserAccount(userDto);
         }
         if (registeredUser == null) {
-            result.reject("email", "such email exists");
+            result.reject("email", "Such email exist's");
         }
         if (result.hasErrors()) {
-               return new ModelAndView("registerForm", "userDto", userDto);
 
-            } else {
-            return new ModelAndView("regPage", "user", registeredUser);
+               return new ModelAndView("register", "userDto", userDto);
+            }
+        else {
+            return new ModelAndView("successregistration", "user", registeredUser);
             }
     }
 
-    private User createNewUserAccount(UserDto userDto, BindingResult bindingResult){
-        User registeredUser = null;
-        try{
-            registeredUser = userService.createNewUserAccount(userDto);
-        }catch (EmailExistExeption emailExistExeption){
-            return null;
-        }
-        return registeredUser;
-    }
+
 }
