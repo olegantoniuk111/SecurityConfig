@@ -34,9 +34,5 @@ public class TestController{
         model.addAttribute("roles", roles);
         return "testPage";
     }
-    @RequestMapping(value = "/regPage", method = RequestMethod.GET)
-    public String regPage(){
-        return "regPage";
-    }
 
 }

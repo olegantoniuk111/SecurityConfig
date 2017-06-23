@@ -12,14 +12,17 @@
 </head>
 
 <body>
-
-<h2>This is a Pokemon JSP</h2>
-
 Hello ${username}!!!<br>
-Your roles are
+Your registered as :
 <c:forEach items="${roles}" var="role">
-${role}
+    ${role}
 </c:forEach>
+<h2>Welcome to our resource</h2>
+
+<a href="/gansApp">to main page</a>
+
+
+
 </body>
 
 </html>

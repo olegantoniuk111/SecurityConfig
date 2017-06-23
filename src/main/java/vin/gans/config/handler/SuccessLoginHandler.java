@@ -15,7 +15,7 @@ public class SuccessLoginHandler implements org.springframework.security.web.aut
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        redirectStrategy.sendRedirect(request,response,"/regPage");
+        redirectStrategy.sendRedirect(request,response,"/testPage");
 
     }
 }
