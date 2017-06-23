@@ -1,16 +1,12 @@
 package vin.gans.domain;
 
-import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.annotation.*;
 import javax.annotation.Generated;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 

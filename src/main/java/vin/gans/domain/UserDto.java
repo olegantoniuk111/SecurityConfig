@@ -1,6 +1,5 @@
 package vin.gans.domain;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import vin.gans.validation.PasswordMatches;
 import vin.gans.validation.ValidateEmail;
